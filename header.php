@@ -8,14 +8,7 @@
 	<!-- Basic Page Needs
   ================================================== -->
     <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<title><?php
-        if ( is_single() ) { single_post_title(); }
-        elseif ( is_home() || is_front_page() ) { bloginfo('name'); print ' | '; bloginfo('description'); get_page_number(); }
-        elseif ( is_page() ) { single_post_title(''); }
-        elseif ( is_search() ) { bloginfo('name'); print ' | Search results for ' . wp_specialchars($s); get_page_number(); }
-        elseif ( is_404() ) { bloginfo('name'); print ' | Not Found'; }
-        else { bloginfo('name'); wp_title('|'); get_page_number(); }
-    ?></title>
+    <title><?php swp_print_title(); ?></title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!--[if lt IE 9]>
@@ -28,17 +21,17 @@
 
 	<!-- CSS
   ================================================== -->
-	<link rel="stylesheet" href="<?php echo get_bloginfo('stylesheet_directory'); ?>/stylesheets/base.css">
-	<link rel="stylesheet" href="<?php echo get_bloginfo('stylesheet_directory'); ?>/stylesheets/skeleton.css">
-	<link rel="stylesheet" href="<?php echo get_bloginfo('stylesheet_directory'); ?>/stylesheets/layout.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/stylesheets/base.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/stylesheets/layout.css">
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
 
 	<!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="<?php echo get_bloginfo('stylesheet_directory'); ?>/images/favicon.ico">
-	<link rel="apple-touch-icon" href="<?php echo get_bloginfo('stylesheet_directory'); ?>/images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_bloginfo('stylesheet_directory'); ?>/images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_bloginfo('stylesheet_directory'); ?>/images/apple-touch-icon-114x114.png">
+	<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/images/favicon.ico">
+	<link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon-114x114.png">
 
     <?php if ( is_singular() && get_option( 'thread-comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
     <?php wp_head(); ?>
@@ -69,7 +62,7 @@
             </div><!-- #branding -->
  
             <div id="access">
-			   <div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', 'your-theme' ) ?>"><?php _e( 'Skip to content', 'your-theme' ) ?></a></div>
+			   <div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', WP_THEME_NAME ) ?>"><?php _e( 'Skip to content', WP_THEME_NAME ) ?></a></div>
                <?php wp_page_menu( 'sort_column=menu_order' ); ?>
             </div><!-- #access -->
  
