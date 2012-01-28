@@ -20,23 +20,147 @@
 /* #Page Styles
 ================================================== */
 
+html { overflow-x: hidden; }
+.skip-link { position: absolute; left: -9000px; }
+.menu ul, li { margin: 0; }
+
+.navigation { overflow: auto; }
+.nav-next { float: right; }
+.nav-previous { float: left; }
+
 /* #Media Queries
 ================================================== */
 
-	/* Smaller than standard 960 (devices and browsers) */
-	@media only screen and (max-width: 959px) {}
+/* Custom Query */
+@media only screen and (min-width: 480px){
+	.menu {
+		height: 30px;
+		margin-left: -10px;
+		margin-right: -10px;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+	}
+	.menu ul {
+		/*overflow: hidden;*/
+		white-space: nowrap;
+	}
+	.menu > ul > li {
+		border-right: 1px solid #ddd;
+	}
 
-	/* Tablet Portrait size to standard 960 (devices and browsers) */
-	@media only screen and (min-width: 768px) and (max-width: 959px) {}
+	.menu li { float: left;	position: relative; }
+	.menu li a { display: block; padding: 4px 10px; }
+	
+	.menu ul.children { position: absolute; visibility: hidden; background: #bbb; z-index: 100; }
+	.menu ul.children li { float: none; }
 
-	/* All Mobile Sizes (devices and browser) */
-	@media only screen and (max-width: 767px) {}
+	.menu ul.children li ul.children { left: 100%; top: 0; }
 
-	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-	@media only screen and (min-width: 480px) and (max-width: 767px) {}
+	.menu li:hover > ul.children { visibility: visible }
 
-	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-	@media only screen and (max-width: 479px) {}
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+	.container { position: static; }
+	header {
+		height: 36px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		border-bottom: 1px solid #888;
+		
+		background: #ddd;
+	}
+	header #masthead { height: 100%; }
+	header #branding { float: left; height: 100%; }
+	header #blog-title { line-height: 36px; font-size: 28px; margin: 0 12px; }
+	header #blog-title a { text-decoration: none; }
+	header #blog-description { display: none; }
+
+	header #access { float: right; height: 100%; }
+	header .show-menu {
+		display: block;
+		height: 36px;
+		width: 36px;
+		background: transparent url(../images/menu-icons.png) no-repeat left top;
+	}
+	header .menu {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		margin-top: 1px;
+
+		visibility: hidden;
+	}
+	header .menu ul {
+		position: absolute;
+		width: 100%;
+	}
+	header .menu li {
+		height: 36px;
+		margin: 0;
+
+		border-bottom: 1px solid #ccc;
+
+		background: white url(../images/arrow_right.png) right center no-repeat;
+	}
+	header .menu a {
+		display: block;
+		line-height: 36px;
+		padding: 0 5px;
+
+		text-decoration: none;
+	}
+
+	header .menu ul.children {
+		position: absolute;
+		left: 100%;
+		top: 0;
+
+		visibility: hidden;
+	}
+	header .menu ul.children.active {
+		visibility: visible;
+	}
+
+	header.active .show-menu {
+		background-position: 0 -36px;
+	}
+	header.active .menu {
+		visibility: visible;
+	}
+
+	#content { margin-top: 40px; }
+	.navigation { margin-bottom: 5px; }
+
+	.post {
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		padding: 5px 8px 8px;
+		margin: 0 0 10px;
+
+		font-size: 85%;
+	}
+	.post-title { margin: 0; }
+	.post-meta {
+		color: #999;
+		margin: 0 0 10px;
+	}
+}
 
 
 /* #Font-Face

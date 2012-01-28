@@ -59,7 +59,7 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
 	================================================== -->
 
    <div id="wrap" class="container">
-      <div id="header">
+      <header>
          <div id="masthead">
  
             <div id="branding">
@@ -76,8 +76,9 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
  
             <div id="access">
 			   <div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', WP_THEME_NAME ) ?>"><?php _e( 'Skip to content', WP_THEME_NAME ) ?></a></div>
+			   <a class="mobile show-menu" href="?sitemap"></a>
                <?php wp_page_menu( 'sort_column=menu_order' ); ?>
             </div><!-- #access -->
  
          </div><!-- #masthead -->
-      </div><!-- #header -->
+      </header><!-- header -->
