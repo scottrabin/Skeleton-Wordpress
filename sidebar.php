@@ -1,3 +1,5 @@
+<section class="<?php print swp_column_width('sidebar'); ?> columns">
+
 <?php if ( is_sidebar_active('primary_widget_area') ) : ?>
         <div id="primary" class="widget-area">
             <ul class="xoxo">
@@ -13,3 +15,5 @@
             </ul>
         </div><!-- #secondary .widget-area -->
 <?php endif; ?>
+
+</section>

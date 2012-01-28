@@ -2,6 +2,8 @@
 
 // define a theme name
 define( 'WP_THEME_NAME', 'skeleton-wp' );
+define( 'WP_THEME_NAME_NICE', 'Skeleton Wordpress' );
+define( 'WP_THEME_PREFIX', 'swp_' );
 
 // Make theme available for translation
 // Translations can be filed in the /languages/ directory
@@ -128,6 +130,40 @@ function swp_post_comments_and_trackbacks(){
 
 }
 
+function swp_column_width( $colname ){
+  $mainWidth = swp_get_option( 'main_width' );
+  $numNameMap = array(null,'one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen');
+  if( $colname === 'main' )
+	return $numNameMap[ $mainWidth ];
+  else
+	return $numNameMap[ 16 - $mainWidth ];
+}
+
+function swp_generate_html( $args ){
+  $tagName = $args['tagName'];
+  $contents = $args['contents'];
+  $attrs = array();
+
+  foreach( $args as $attribute => $value ){
+	// skip over tagName and contents
+	if( $attribute === 'tagName' || $attribute === 'contents' ){ continue; }
+
+	// if checked && false, don't do anything
+	if( $attribute === 'checked' && $value === false ){ continue; }
+	if( $attribute === 'selected' && $value === false ){ continue; }
+
+	$attrs[] = "${attribute}=\"${value}\"";
+  }
+  $attributes = implode(' ', $attrs);
+
+  if( strlen($attributes) > 0 ){
+	return "<${tagName} ${attributes}>${contents}</${tagName}>";
+  } else {
+	return "<${tagName}>${contents}</${tagName}>";
+  }
+
+}
+
 /* Sidebar */
 function theme_widgets_init() {
   // first area
@@ -183,4 +219,6 @@ function is_sidebar_active( $index ) {
 }
 
 
+require_once ( get_template_directory() . '/settings/theme-options.php' );
+//require_once( get_template_directory() . '/my-theme-settings.php' );
 ?>

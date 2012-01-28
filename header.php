@@ -25,6 +25,19 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/stylesheets/skeleton.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/stylesheets/layout.css">
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
+   <style type="text/css">
+   <?php
+
+   $sidebar_position = swp_get_option('sidebar_position');
+$content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
+
+?>
+
+#content{ float: <?php print $content_position; ?>; }
+#sidebar{ float: <?php print $sidebar_position; ?>; }
+
+
+   </style>
 
 	<!-- Favicons
 	================================================== -->
