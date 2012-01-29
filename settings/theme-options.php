@@ -1,7 +1,64 @@
 <?php
 
+function swp_get_sections(){
+  return array(
+			   'layout' => 'Layout'
+			   );
+}
+
 function swp_get_options(){
   $imagepath = get_bloginfo( 'template_directory' ) . '/images/';
+
+  return array(
+			   'sidebar_position' => array(
+										   'title' => 'Site Layout',
+										   "desc" => "Select a sidebar layout position",
+										   'section' => 'layout',
+										   "std"  => "right",
+										   "type" => "images",
+										   'class' => 'enum',
+										   "choices" => array(
+															  'left' => $imagepath . '2cl.png',
+															  'right' => $imagepath . '2cr.png'
+															  )
+										   ),
+			   'main_width' => array(
+									 'title' => 'Main Section Width',
+									 'desc' => 'Set the width of the main section of the blog',
+									 'section' => 'layout',
+									 'std' => 13,
+									 'type' => 'select',
+									 'class' => 'range',
+									 'range' => array( 1, 16 ),
+									 'choices' => array(
+														'One' => 1,
+														'Two' => 2,
+														'Three' => 3,
+														'Four' => 4,
+														'Five' => 5,
+														'Six' => 6,
+														'Seven' => 7,
+														'Eight' => 8,
+														'Nine' => 9,
+														'Ten' => 10,
+														'Eleven' => 11,
+														'Twelve' => 12,
+														'Thirteen' => 13,
+														'Fourteen' => 14,
+														'Fifteen' => 15,
+														'Sixteen' => 16
+														)
+									 ),
+			   'primary_color' => array(
+										'title' => 'Primary Theme Color',
+										'desc' => 'Set the primary theme color of the blog',
+										'section' => 'layout',
+										'std' => '5176de',
+										'class' => 'rgb',
+										'type' => 'text'
+										)
+			   );
+  /*
   return array(
 			   'Layout' => array(
 								 'Site Layout' => array(
@@ -40,17 +97,27 @@ function swp_get_options(){
 																				  'Fifteen' => 15,
 																				  'Sixteen' => 16
 																				  )
-															   )
+															   ),
+								 'Primary Theme Color' => array(
+																'id' => 'primary_color',
+																'desc' => 'Set the primary theme color of the blog',
+																'std' => '5176de',
+																'class' => 'rgb',
+																'type' => 'text'
+																)
 								 )
 			   );
+  */
 }
 
 function swp_get_option( $opt ){
   $options = get_option( 'swp_options' );
-  if( isset( $options[$opt] ) ){
-	return $options[$opt];
+
+  if( isset( $options[ $opt ] ) ){
+	return $options[ $opt ];
   } else {
-	return null;
+	$options = swp_get_options();
+	return isset( $options[ $opt ][ 'std' ] ) ? $options[ $opt ][ 'std' ] : null;
   }
 }
 
@@ -95,21 +162,18 @@ function swp_admin_init(){
 
   register_setting( 'swp_options', 'swp_options', 'swp_validate_settings' );
   $options = swp_get_options();
-  
-  foreach( $options as $sectionTitle => $options ){
-	// register the settings section
-	$slug = preg_replace('/\W/', '', strtolower( $sectionTitle ) );
-	add_settings_section( $slug, $sectionTitle, 'swp_display_section', 'swp_options' );
 
-	// register the individual settings
-	foreach( $options as $title => $option ){
-	  $option[ 'title' ] = $title;
-	  $option[ 'section' ] = $slug;
-	  swp_create_setting( $option );
+  // register the sections
+  $sections = swp_get_sections();
+  foreach( $sections as $slug => $title ){
+	add_settings_section( $slug, $title, 'swp_display_section', 'swp_options' );
+  }
 
-	  if( $initialize )
-		$defaults[ $option['id'] ] = $option['std'];
-	}
+  // register the settings
+  $settings = swp_get_options();
+  foreach( $settings as $id => $setting ){
+	$setting['id'] = $id;
+	swp_create_setting( $setting );
   }
 
   if( $initialize )	{

@@ -35,6 +35,7 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
 
 #content{ float: <?php print $content_position; ?>; }
 #sidebar{ float: <?php print $sidebar_position; ?>; }
+.primary-bg{ background-color: #<?php print swp_get_option('primary_color'); ?>; }
 
 
    </style>
@@ -59,7 +60,7 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
 	================================================== -->
 
    <div id="wrap" class="container">
-      <header>
+      <header class="shadow primary">
          <div id="masthead">
  
             <div id="branding">
@@ -75,10 +76,15 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
             </div><!-- #branding -->
  
             <div id="access">
-			   <div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', WP_THEME_NAME ) ?>"><?php _e( 'Skip to content', WP_THEME_NAME ) ?></a></div>
-			   <a class="mobile show-menu" href="?sitemap"></a>
+			   <div class="skip-link screenreader"><a href="#content" title="<?php _e( 'Skip to content', WP_THEME_NAME ) ?>"><?php _e( 'Skip to content', WP_THEME_NAME ) ?></a></div>
+			   <a id="show-menu" class="mobile icon icon-list-dark" href="?sitemap"></a>
+			   <a id="show-search" class="mobile icon icon-zoom-dark" href="search"></a>
                <?php wp_page_menu( 'sort_column=menu_order' ); ?>
+			   <?php get_search_form(); ?>
             </div><!-- #access -->
  
          </div><!-- #masthead -->
       </header><!-- header -->
+	  <div id="overlay"></div>
+	  <div id="header-bg-primary" class="primary-bg"></div>
+	  <div id="header-bg-secondary" class="secondary-bg"></div>

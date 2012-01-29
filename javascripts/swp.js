@@ -1,10 +1,46 @@
 (function($){
     var ANIM_TIME = 300,
+
         header;
 
-    function menu_reset(){
-        $('.menu', header).css('left', '');
-        $('ul.active', header).removeClass('active');
+    function toggle_icon( el, iconName, isPressed ){
+        var light = 'icon-' + iconName + '-light',
+            dark = 'icon-' + iconName + '-dark';
+        if( isPressed ){
+            $(el).removeClass(dark).addClass(light);
+        } else {
+            $(el).removeClass(light).addClass(dark);
+        }
+    }
+
+    function overlay_active( activate ){
+        $('#overlay').toggleClass( 'active', activate );
+    }
+
+    function menu_active( activate ){
+        var menu = $('.menu', header);
+        if( arguments.length === 0 ){ return menu.hasClass('active'); }
+
+        menu.toggleClass('active', activate);
+        toggle_icon( '#show-menu', 'list', activate );
+        overlay_active( activate );
+
+        if( ! menu_active() ){
+            menu.css( 'left', '' ).find( '.active' ).removeClass('active');
+        }
+    }
+
+    function search_active( activate ){
+        var search = $('#searchform');
+        if( arguments.length === 0 ){ return search.hasClass('active'); }
+
+        search.toggleClass( 'active', activate );
+        toggle_icon( '#show-search', 'zoom', activate );
+        overlay_active( activate );
+
+        if( search_active() ){
+            $('input[name="s"]', search).focus();
+        }
     }
 
     $(function(){
@@ -19,18 +55,23 @@
         // close the menu if anything outside the header is clicked
         $('body').bind( 'click', function(e){
             if( $(e.target).closest('header').length === 0 ){
-                header.removeClass('active');
+                search_active( false );
+                menu_active( false );
             }
         });
 
         // toggle the menu if the show menu button is clicked
-        $('.show-menu').bind( 'click', function(e){
-            if( header.hasClass('active') ){
-                // deactivating, so reset
-                menu_reset();
-            }
+        $('#show-menu').on( 'click', function(e){
+            search_active( false );
+            menu_active( ! menu_active() );
 
-            header.toggleClass('active');
+            e.preventDefault();
+            return false;
+        });
+
+        $('#show-search').on( 'click', function(e){
+            menu_active( false );
+            search_active( ! search_active() );
 
             e.preventDefault();
             return false;
