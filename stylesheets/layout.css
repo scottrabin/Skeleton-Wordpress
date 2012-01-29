@@ -22,8 +22,9 @@
 
 html { overflow-x: hidden; }
 
-.mobile { visibility: hidden; }
-body.mobile, body.mobile .mobile { visibility: visible; }
+body { position: relative; }
+.mobile { display: none; }
+body.mobile, body.mobile .mobile { display: inherit; }
 
 .screenreader { position: absolute; left: -9999px; }
 
@@ -47,11 +48,26 @@ body.mobile, body.mobile .mobile { visibility: visible; }
 .nav-next { float: right; }
 .nav-previous { float: left; }
 
+.post-meta {
+	color: #999;
+	margin: 0 0 10px;
+}
+
+
 /* #Media Queries
 ================================================== */
 
 /* Custom Query */
 @media only screen and (min-width: 480px){
+	body { padding-top: 22px; }
+
+	/* Header styles */
+	#header-bg-primary { position: absolute; top: 0; left: 0; right: 0; height: 8px; }
+	#header-bg-secondary { position: absolute; top: 8px; left: 0; right: 0; height: 8px; }
+	header { }
+
+	#blog-title { margin-top: 0; }
+
 	.menu {
 		height: 30px;
 		margin-left: -10px;
@@ -77,6 +93,8 @@ body.mobile, body.mobile .mobile { visibility: visible; }
 
 	.menu li:hover > ul.children { visibility: visible }
 
+	.post-title { border-bottom: 1px solid #777; margin: 25px 0 10px; }
+	.post-title a { text-decoration: none; }
 }
 
 /* Smaller than standard 960 (devices and browsers) */
@@ -193,10 +211,6 @@ body.mobile, body.mobile .mobile { visibility: visible; }
 		font-size: 85%;
 	}
 	.post-title { margin: 0; }
-	.post-meta {
-		color: #999;
-		margin: 0 0 10px;
-	}
 }
 
 

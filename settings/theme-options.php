@@ -56,58 +56,16 @@ function swp_get_options(){
 										'std' => '5176de',
 										'class' => 'rgb',
 										'type' => 'text'
-										)
+										),
+			   'secondary_color' => array(
+										  'title' => 'Secondary Theme Color',
+										  'desc' => 'Set the secondary (highlight) color of the blog',
+										  'section' => 'layout',
+										  'std' => '3156be',
+										  'class' => 'rgb',
+										  'type' => 'text'
+										  )
 			   );
-  /*
-  return array(
-			   'Layout' => array(
-								 'Site Layout' => array(
-														"id"   => "sidebar_position",
-														"desc" => "Select a sidebar layout position",
-														"std"  => "right",
-														"type" => "images",
-														'class' => 'enum',
-														"choices" => array(
-																		   'left' => $imagepath . '2cl.png',
-																		   'right' => $imagepath . '2cr.png'
-																		   )
-														),
-								 'Main Section Width' => array(
-															   'id' => 'main_width',
-															   'desc' => 'Set the width of the main section of the blog',
-															   'std' => 13,
-															   'type' => 'select',
-															   'class' => 'range',
-															   'range' => array( 1, 16 ),
-															   'choices' => array(
-																				  'One' => 1,
-																				  'Two' => 2,
-																				  'Three' => 3,
-																				  'Four' => 4,
-																				  'Five' => 5,
-																				  'Six' => 6,
-																				  'Seven' => 7,
-																				  'Eight' => 8,
-																				  'Nine' => 9,
-																				  'Ten' => 10,
-																				  'Eleven' => 11,
-																				  'Twelve' => 12,
-																				  'Thirteen' => 13,
-																				  'Fourteen' => 14,
-																				  'Fifteen' => 15,
-																				  'Sixteen' => 16
-																				  )
-															   ),
-								 'Primary Theme Color' => array(
-																'id' => 'primary_color',
-																'desc' => 'Set the primary theme color of the blog',
-																'std' => '5176de',
-																'class' => 'rgb',
-																'type' => 'text'
-																)
-								 )
-			   );
-  */
 }
 
 function swp_get_option( $opt ){

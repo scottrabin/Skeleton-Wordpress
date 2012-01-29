@@ -36,7 +36,7 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
 #content{ float: <?php print $content_position; ?>; }
 #sidebar{ float: <?php print $sidebar_position; ?>; }
 .primary-bg{ background-color: #<?php print swp_get_option('primary_color'); ?>; }
-
+.secondary-bg { background-color: #<?php print swp_get_option('secondary_color'); ?>; }
 
    </style>
 
@@ -64,11 +64,11 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
          <div id="masthead">
  
             <div id="branding">
-		       <div id="blog-title">
-		          <span><a href="<?php bloginfo( 'url' ); ?>/" title="<?php bloginfo( 'name' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
-               </div>
+		       <h1 id="blog-title">
+		          <a href="<?php bloginfo( 'url' ); ?>/" title="<?php bloginfo( 'name' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+               </h1>
 		<?php if ( is_home() || is_front_page() ) { ?>
-			   <h1 id="blog-description"><?php bloginfo( 'description' ); ?></h1>
+			   <h2 id="blog-description"><?php bloginfo( 'description' ); ?></h2>
 		<?php } else { ?>
 		       <div id="blog-description"><?php bloginfo( 'description' ); ?></div>
 		<?php } ?>
@@ -80,11 +80,8 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
 			   <a id="show-menu" class="mobile icon icon-list-dark" href="?sitemap"></a>
 			   <a id="show-search" class="mobile icon icon-zoom-dark" href="search"></a>
                <?php wp_page_menu( 'sort_column=menu_order' ); ?>
-			   <?php get_search_form(); ?>
+				  <div class="mobile"><?php get_search_form(); ?></div>
             </div><!-- #access -->
  
          </div><!-- #masthead -->
       </header><!-- header -->
-	  <div id="overlay"></div>
-	  <div id="header-bg-primary" class="primary-bg"></div>
-	  <div id="header-bg-secondary" class="secondary-bg"></div>
