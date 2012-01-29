@@ -35,6 +35,23 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 #main-menu ul, #main-menu li { margin: 0; }
 #main-menu a { text-decoration: none; }
 
+#searchform div { position: relative; height: 32px; margin-bottom: 15px; }
+#searchform .icon {
+	position: absolute;
+	left: 4px;
+	top: 6px;
+	font-size: 20px;
+	z-index: 100;
+}
+#searchform input[type="text"] {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: auto;
+	padding: 4px 6px 3px 26px;
+	font-size: 18px;
+}
+
 #overlay {
 	visibility: hidden;
 	background-color: black;
@@ -56,7 +73,7 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 	color: #999;
 	margin: 0 0 10px;
 }
-.post-content img { margin: 0 8px; }
+.post-content img { margin: 8px; }
 .post-content img.alignleft { margin-left: 0; }
 .post-content img.alignright { margin-right: 0; }
 .more-link { float: right; padding: 8px; }
@@ -89,8 +106,6 @@ span.comments-num /* no comments */ { cursor: default; }
 
 	#main-menu {
 		height: 30px;
-		margin-left: -10px;
-		margin-right: -10px;
 		border: 1px solid #ddd;
 		border-radius: 5px;
 
@@ -199,8 +214,8 @@ span.comments-num /* no comments */ { cursor: default; }
 		color: #aaa;
 	}
 
-	#main-menu, #searchform { margin-top: 37px; display: none;}
-	#main-menu.active, #searchform.active { display: block; }
+	#main-menu, header #searchform { margin-top: 37px; display: none;}
+	#main-menu.active, header #searchform.active { display: block; }
 
 	#main-menu { position: absolute; left: 0; width: 100%; }
 	#main-menu ul { position: absolute; width: 100%; }
@@ -226,9 +241,9 @@ span.comments-num /* no comments */ { cursor: default; }
 
 		visibility: hidden;
 	}
-	#searchform label { position: absolute;	left: -9999px; }
-	#searchform input[type="text"] { float: left; width: 80%; }
-	#searchform input[type="submit"] { float: right; padding: 6px; }
+
+	#searchform div { position: absolute; left: 2%; right: 2%; }
+	#searchform .icon { top: 5px; }
 
 	#content { margin-top: 40px; }
 	.navigation { margin-bottom: 5px; }

@@ -44,6 +44,8 @@
         // listen for resize events to apply the .mobile class if necessary
         $(window).on( 'resize', function(){
             $('body').toggleClass( 'mobile', $(this).width() < 480 );
+            search_active( false );
+            menu_active( false );
         }).trigger('resize');
 
         // close the menu if anything outside the header is clicked
