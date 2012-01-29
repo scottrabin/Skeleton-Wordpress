@@ -1,9 +1,8 @@
 <?php get_header(); ?>
  
-   <div id="container">
-      <div id="content">
+      <div id="content" class="<?php print swp_column_width('main'); ?> columns">
  
-	  <?php swp_post_navigation_above(); ?>
+		 <?php /*swp_post_navigation_above();*/ ?>
 
 	  <?php the_post(); ?>
 
@@ -18,7 +17,6 @@
 	  <?php comments_template( '', true ); ?>
 
       </div><!-- #content -->
-   </div><!-- #container -->
  
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
