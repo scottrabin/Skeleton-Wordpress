@@ -60,7 +60,12 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 .post-content img.alignleft { margin-left: 0; }
 .post-content img.alignright { margin-right: 0; }
 .more-link { float: right; padding: 8px; }
-.comments-link { float: right; }
+
+.comments-link { float: right; height: 100%; width: 32px; height: 24px; position: relative; }
+.comments-link * { position: absolute; right: 0; top: 0; font-size: 20px; text-align: center; width: 100%; }
+.comments-link a, .comments-num { color: white; font-size: 15px; text-decoration: none; }
+span.comments-num /* no comments */ { cursor: default; }
+
 .post-utility { clear: both; padding-top: 14px; font-size: 90%; color: #555; }
 
 .widget-title { border-bottom: 1px dashed #ccc; padding-bottom: 3px; font-size: 24px; line-height: 30px; }
@@ -183,38 +188,26 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 	#show-menu, #show-search {
 		float: right;
 		display: block;
-		margin: 2px;
-		padding: 2px;
-	}
-	header .menu {
-		position: absolute;
-		left: 0;
-		width: 100%;
-		margin-top: 37px;
-
-		visibility: hidden;
-	}
-	header .menu ul {
-		position: absolute;
-		width: 100%;
-	}
-	header .menu li {
-		height: 36px;
-		margin: 0;
-
-		border-bottom: 1px solid #ccc;
-
-		background: white url(../images/arrow_right.png) right center no-repeat;
-	}
-	header .menu a {
-		display: block;
+		width: 32px;
 		line-height: 36px;
-		padding: 0 5px;
+		text-align: center;
 
-		text-decoration: none;
+		font-size: 24px;
+		color: #111;
+	}
+	#show-menu.active, #show-search.active {
+		color: #aaa;
 	}
 
-	header .menu ul.children {
+	#main-menu, #searchform { margin-top: 37px; display: none;}
+	#main-menu.active, #searchform.active { display: block; }
+
+	#main-menu { position: absolute; left: 0; width: 100%; }
+	#main-menu ul { position: absolute; width: 100%; }
+	#main-menu li { height: 36px; margin: 0; border-bottom: 1px solid #ccc; background: white url(../images/arrow_right.png) right center no-repeat; }
+	#main-menu a { display: block; line-height: 36px; padding: 0 5px; text-decoration: none; }
+
+	#main-menu ul ul {
 		position: absolute;
 		left: 100%;
 		top: 0;
@@ -269,6 +262,11 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 	    font-weight: normal;
 	    font-style: normal; }
 */
+
+.icon {	font-family: "WebSymbolsRegular"; }
+a.icon { text-decoration: none; }
+
+/*
 .icon {
     background: url(../images/icon-sprite.png) no-repeat;
 }
@@ -872,3 +870,4 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
     height: 32px;
     background-position: -0px -0px;
 }
+*/

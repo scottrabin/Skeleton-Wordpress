@@ -32,7 +32,14 @@
 $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
 
 ?>
-
+@font-face{ 
+	font-family: 'WebSymbolsRegular';
+src: url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.eot');
+	src: url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.woff') format('woff'),
+	     url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.ttf') format('truetype'),
+	     url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
+}
 #content{ float: <?php print $content_position; ?>; }
 #sidebar{ float: <?php print $sidebar_position; ?>; }
 .primary-bg{ background-color: #<?php print swp_get_option('primary_color'); ?>; }
@@ -78,8 +85,8 @@ a { color: #<?php print swp_get_option('link_color'); ?>; }
  
             <div id="access">
 			   <div class="skip-link screenreader"><a href="#content" title="<?php _e( 'Skip to content', WP_THEME_NAME ) ?>"><?php _e( 'Skip to content', WP_THEME_NAME ) ?></a></div>
-			   <a id="show-menu" class="mobile icon icon-list-dark" href="?sitemap"></a>
-			   <a id="show-search" class="mobile icon icon-zoom-dark" href="search"></a>
+			   <a id="show-menu" class="mobile icon icon-list-dark" href="?sitemap">²</a>
+			   <a id="show-search" class="mobile icon icon-zoom-dark" href="search">L</a>
 				  <?php /*wp_page_menu( 'sort_column=menu_order' );*/ ?>
 				  <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_id' => 'main-menu' ) ); ?>
 				  <div class="mobile"><?php get_search_form(); ?></div>

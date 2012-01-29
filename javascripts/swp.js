@@ -4,13 +4,7 @@
         header;
 
     function toggle_icon( el, iconName, isPressed ){
-        var light = 'icon-' + iconName + '-light',
-            dark = 'icon-' + iconName + '-dark';
-        if( isPressed ){
-            $(el).removeClass(dark).addClass(light);
-        } else {
-            $(el).removeClass(light).addClass(dark);
-        }
+        $(el).toggleClass( 'active', isPressed );
     }
 
     function overlay_active( activate ){
@@ -18,7 +12,7 @@
     }
 
     function menu_active( activate ){
-        var menu = $('.menu', header);
+        var menu = $('#main-menu', header);
         if( arguments.length === 0 ){ return menu.hasClass('active'); }
 
         menu.toggleClass('active', activate);
@@ -78,13 +72,14 @@
         });
 
         // when a menu link with children is clicked, show the sub-menu
-        $('html').on( 'click', '.mobile .menu a', function(e){
+        $('html').on( 'click', '.mobile #main-menu a', function(e){
             // find out if the menu item has a sub-menu
-            if( $(this).closest('li').children('ul.children').length > 0 ){
+            var sub_menu = $(this).closest('li').children('ul');
 
-                $(this)
-                    .closest('li').children('ul.children').addClass('active').end()
-                    .closest('.menu').animate({left: "-=100%"}, ANIM_TIME);
+            if( sub_menu.length > 0 ){
+
+                sub_menu.addClass('active');
+                $('#main-menu').animate({left: '-=100%'}, ANIM_TIME);
 
                 e.preventDefault();
                 return false;

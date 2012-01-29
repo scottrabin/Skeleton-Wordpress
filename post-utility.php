@@ -1,4 +1,4 @@
-<div class="post-utility">
+<div class="post-utility clearfix">
 <?php
 
    $utilities = array();
@@ -26,5 +26,5 @@ if( is_array($tags) && sizeof($tags) > 0 ){
 
 print implode('<span class="meta-sep"> | </span>', $utilities);
 ?>
-   <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', WP_THEME_NAME ), __( '1 Comment', WP_THEME_NAME ), __( '% Comments', WP_THEME_NAME ) ) ?></span>
+<span class="comments-link"><span class="icon">d</span><?php comments_popup_link( '...', '1', '%', 'comments-num', 'X' ); ?></span>
 </div><!-- .post-utility -->
