@@ -2,7 +2,7 @@
 
 <div id="content" class="<?php print swp_column_width('main'); ?> columns">
 
-   <?php swp_post_navigation_above(); ?>
+   <?php //swp_post_navigation_above(); ?>
 
    <?php /* Page content generation */ ?>
    <?php while ( have_posts() ) : the_post() ?>
