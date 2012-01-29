@@ -57,6 +57,8 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 	margin: 0 0 10px;
 }
 
+.widget-title { border-bottom: 1px dashed #ccc; padding-bottom: 3px; font-size: 24px; line-height: 30px; }
+
 
 /* #Media Queries
 ================================================== */
@@ -121,6 +123,10 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 
 	.post-title { border-bottom: 1px solid #777; margin: 25px 0 10px; }
 	.post-title a { text-decoration: none; }
+
+	.sidebar { margin-top: 15px; }
+	.widget-container { margin-bottom: 22px; }
+	.widget-container ul { margin-left: 8px; }
 }
 
 /* Smaller than standard 960 (devices and browsers) */
