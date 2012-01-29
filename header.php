@@ -25,21 +25,11 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/stylesheets/skeleton.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/stylesheets/layout.css">
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
-   <style type="text/css">
-   <?php
+   <style type="text/css"><?php
 
    $sidebar_position = swp_get_option('sidebar_position');
-$content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
+$content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );?>
 
-?>
-@font-face{ 
-	font-family: 'WebSymbolsRegular';
-src: url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.eot');
-	src: url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
-	     url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.woff') format('woff'),
-	     url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.ttf') format('truetype'),
-	     url('<?php bloginfo('template_directory'); ?>/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
-}
 #content{ float: <?php print $content_position; ?>; }
 #sidebar{ float: <?php print $sidebar_position; ?>; }
 .primary-bg{ background-color: #<?php print swp_get_option('primary_color'); ?>; }
