@@ -68,30 +68,31 @@ body.mobile, body.mobile .mobile { display: inherit; }
 
 	#blog-title { margin-top: 0; }
 
-	.menu {
+	#main-menu {
 		height: 30px;
 		margin-left: -10px;
 		margin-right: -10px;
 		border: 1px solid #ddd;
 		border-radius: 5px;
 	}
-	.menu ul {
-		/*overflow: hidden;*/
+	#main-menu ul {
 		white-space: nowrap;
+		height: 100%;
 	}
-	.menu > ul > li {
+	#main-menu > ul > li {
 		border-right: 1px solid #ddd;
+		height: 100%;
 	}
 
-	.menu li { float: left;	position: relative; }
-	.menu li a { display: block; padding: 4px 10px; }
+	#main-menu li { float: left; position: relative; }
+	#main-menu li a { display: block; padding: 4px 10px; }
 	
-	.menu ul.children { position: absolute; visibility: hidden; background: #bbb; z-index: 100; }
-	.menu ul.children li { float: none; }
+	#main-menu ul ul { position: absolute; visibility: hidden; background: #bbb; z-index: 100; }
+	#main-menu ul ul li { float: none; }
 
-	.menu ul.children li ul.children { left: 100%; top: 0; }
+	#main-menu ul ul li ul { left: 100%; top: 0; }
 
-	.menu li:hover > ul.children { visibility: visible }
+	#main-menu li:hover > ul { visibility: visible }
 
 	.post-title { border-bottom: 1px solid #777; margin: 25px 0 10px; }
 	.post-title a { text-decoration: none; }

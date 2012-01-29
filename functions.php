@@ -218,6 +218,16 @@ function is_sidebar_active( $index ) {
   return false;
 }
 
+/** Native Menu Support **/
+add_action( 'init', 'swp_register_menus' );
+function swp_register_menus(){
+  register_nav_menus( array(
+							'main-menu' => __('Main Menu', WP_THEME_NAME)
+							)
+					  );
+}
+					 
+
 
 require_once ( get_template_directory() . '/settings/theme-options.php' );
 //require_once( get_template_directory() . '/my-theme-settings.php' );

@@ -37,6 +37,7 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
 #sidebar{ float: <?php print $sidebar_position; ?>; }
 .primary-bg{ background-color: #<?php print swp_get_option('primary_color'); ?>; }
 .secondary-bg { background-color: #<?php print swp_get_option('secondary_color'); ?>; }
+a { color: #<?php print swp_get_option('link_color'); ?>; }
 
    </style>
 
@@ -79,7 +80,8 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );
 			   <div class="skip-link screenreader"><a href="#content" title="<?php _e( 'Skip to content', WP_THEME_NAME ) ?>"><?php _e( 'Skip to content', WP_THEME_NAME ) ?></a></div>
 			   <a id="show-menu" class="mobile icon icon-list-dark" href="?sitemap"></a>
 			   <a id="show-search" class="mobile icon icon-zoom-dark" href="search"></a>
-               <?php wp_page_menu( 'sort_column=menu_order' ); ?>
+				  <?php /*wp_page_menu( 'sort_column=menu_order' );*/ ?>
+				  <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_id' => 'main-menu' ) ); ?>
 				  <div class="mobile"><?php get_search_form(); ?></div>
             </div><!-- #access -->
  

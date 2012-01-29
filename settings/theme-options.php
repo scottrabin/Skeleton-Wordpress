@@ -64,7 +64,15 @@ function swp_get_options(){
 										  'std' => '3156be',
 										  'class' => 'rgb',
 										  'type' => 'text'
-										  )
+										  ),
+			   'link_color' => array(
+									 'title' => 'Link Color',
+									 'desc' => 'Set the color for anchor links',
+									 'section' => 'layout',
+									 'std' => '2970A6',
+									 'class' => 'rgb',
+									 'type' => 'text'
+									 )
 			   );
 }
 
