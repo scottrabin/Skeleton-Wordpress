@@ -22,15 +22,18 @@
 
 html { overflow-x: hidden; }
 
-body { position: relative; }
+body { position: relative; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 .mobile { display: none; }
 body.mobile, body.mobile .mobile { display: inherit; }
+
+h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 .screenreader { position: absolute; left: -9999px; }
 
 .active { visibility: visible !important; }
 
-.menu ul, li { margin: 0; }
+#main-menu ul, #main-menu li { margin: 0; }
+#main-menu a { text-decoration: none; }
 
 #overlay {
 	visibility: hidden;
@@ -48,6 +51,7 @@ body.mobile, body.mobile .mobile { display: inherit; }
 .nav-next { float: right; }
 .nav-previous { float: left; }
 
+.post-title a { color: #222; }
 .post-meta {
 	color: #999;
 	margin: 0 0 10px;
@@ -66,7 +70,9 @@ body.mobile, body.mobile .mobile { display: inherit; }
 	#header-bg-secondary { position: absolute; top: 8px; left: 0; right: 0; height: 8px; }
 	header { }
 
-	#blog-title { margin-top: 0; }
+	#blog-title { margin: 0 0; font-size: 45px;}
+	#blog-title a { text-decoration: none; font-weight: bold; letter-spacing: -1px;  }
+	#blog-description { text-indent: 25px; margin: 0 0 8px; color: #aaa; font-size: 25px; letter-spacing: -1px; line-height: 25px; }
 
 	#main-menu {
 		height: 30px;
@@ -74,8 +80,10 @@ body.mobile, body.mobile .mobile { display: inherit; }
 		margin-right: -10px;
 		border: 1px solid #ddd;
 		border-radius: 5px;
+
+		font-weight: bold;
 	}
-	#main-menu ul {
+	#main-menu > ul {
 		white-space: nowrap;
 		height: 100%;
 	}
@@ -84,14 +92,31 @@ body.mobile, body.mobile .mobile { display: inherit; }
 		height: 100%;
 	}
 
+	/* top-level menu items */
 	#main-menu li { float: left; position: relative; }
-	#main-menu li a { display: block; padding: 4px 10px; }
+	#main-menu li a { display: block; padding: 0 10px; height: 30px; line-height: 30px; }
 	
-	#main-menu ul ul { position: absolute; visibility: hidden; background: #bbb; z-index: 100; }
+	/* sub-menus */
+	#main-menu ul ul {
+		position: absolute;
+		visibility: hidden;
+		z-index: 100;
+
+		border-radius: 5px;
+		background: #fafafa;
+		border: 1px solid #bbb;
+
+		box-shadow: 1px 1px 7px #aaa;
+
+	}
+	#main-menu > ul ul { font-size: 90%; }
+
 	#main-menu ul ul li { float: none; }
 
-	#main-menu ul ul li ul { left: 100%; top: 0; }
+	/* 3 & deeper */
+	#main-menu ul ul li ul { left: 100%; top: 0; margin-top: -1px; }
 
+	/* enable visibility */
 	#main-menu li:hover > ul { visibility: visible }
 
 	.post-title { border-bottom: 1px solid #777; margin: 25px 0 10px; }
