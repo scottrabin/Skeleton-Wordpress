@@ -56,6 +56,12 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 	color: #999;
 	margin: 0 0 10px;
 }
+.post-content img { margin: 0 8px; }
+.post-content img.alignleft { margin-left: 0; }
+.post-content img.alignright { margin-right: 0; }
+.more-link { float: right; padding: 8px; }
+.comments-link { float: right; }
+.post-utility { clear: both; padding-top: 14px; }
 
 .widget-title { border-bottom: 1px dashed #ccc; padding-bottom: 3px; font-size: 24px; line-height: 30px; }
 
