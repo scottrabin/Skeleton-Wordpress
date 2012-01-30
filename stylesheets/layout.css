@@ -29,6 +29,7 @@ body.mobile, body.mobile .mobile { display: inherit; }
 h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 .screenreader { position: absolute; left: -9999px; }
+.alignright { float: right; }
 
 .active { visibility: visible !important; }
 
@@ -68,6 +69,8 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 .nav-next { float: right; }
 .nav-previous { float: left; }
 
+.post-single .post-title { margin-bottom: 0; }
+.post-single .post-utility { padding-top: 5px; margin-bottom: 10px; }
 .post-title a { color: #222; }
 .post-meta {
 	color: #999;
@@ -96,7 +99,7 @@ span.comments-num /* no comments */ { cursor: default; }
 .comment-form-comment { padding: 8px; margin: 0; }
 .comment-form-comment textarea { width: 100%; padding: 0; margin: 0; }
 #commentform span, #commentform input, #commentform label { display: inline; }
-
+#comments .icon { font-size: 70%; margin: 0 6px; }
 
 /* #Media Queries
 ================================================== */

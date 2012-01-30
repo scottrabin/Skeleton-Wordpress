@@ -1,6 +1,6 @@
 <?php get_header(); ?>
  
-      <div id="content" class="<?php print swp_column_width('main'); ?> columns">
+      <div id="content" class="post-single <?php print swp_column_width('main'); ?> columns">
  
 		 <?php /*swp_post_navigation_above();*/ ?>
 
