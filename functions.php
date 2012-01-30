@@ -227,6 +227,32 @@ function swp_register_menus(){
 					  );
 }
 
+
+function swp_comment_template($comment, $args, $depth){
+
+  $GLOBALS['comment'] = $comment;
+  extract($args, EXTR_SKIP);
+  global $comment_alt;
+
+  if ( 'div' == $args['style'] ) {
+	$tag = 'div';
+	$add_below = 'comment';
+  } else {
+	$tag = 'li';
+	$add_below = 'div-comment';
+  }
+
+  $comment_text = apply_filters( 'comment_text', get_comment_text(), $comment );
+
+  include( dirname(__FILE__) . '/comment.php');
+}
+
+add_filter( 'get_avatar', 'swp_filter_avatar' );
+function swp_filter_avatar($avatar){
+  global $comment_alt;
+  return preg_replace( '/class=([\'"])/', $comment_alt % 2 ? 'class=\1secondary-border ' : 'class=\1primary-border ', $avatar );
+}
+
 require_once ( get_template_directory() . '/settings/theme-options.php' );
 //require_once( get_template_directory() . '/my-theme-settings.php' );
 ?>

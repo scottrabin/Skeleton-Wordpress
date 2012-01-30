@@ -28,7 +28,6 @@ body.mobile, body.mobile .mobile { display: inherit; }
 
 h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 a * { cursor: pointer; }
-a:visited { color: inherit; }
 
 .screenreader { position: absolute; left: -9999px; }
 .alignright { float: right; }
@@ -95,7 +94,8 @@ a:visited { color: inherit; }
 
 .commentlist { list-style-type: none; margin: 0; }
 .commentlist .children { margin: 0 0 0 20px; }
-.comment { margin: 12px 0 0; padding: 8px; border: 1px solid #aaa; border-radius: 10px; }
+.comment-item { margin: 12px 0 0; padding: 8px 0 8px 8px; border-radius: 10px; }
+.comment .reply a { text-decoration: none; }
 .commentlist .children .comment { margin-top: 12px; }
 
 .comment-form-comment { padding: 8px; margin: 0; }
@@ -179,6 +179,26 @@ a:visited { color: inherit; }
 		float: left;
 		margin: 0 10px 0 0;
 	}
+
+	.comment .avatar {
+		position: absolute;
+		left: 0;
+		top: 0;
+		padding: 1px;
+		border-width: 1px;
+		border-style: solid;
+		background-color: white;
+	}
+	.comment-author {
+		position: relative; 
+		padding-left: 65px;
+		border-bottom: 1px solid #ccc;
+		font-size: 80%;
+	}
+	.comment-author a { text-decoration: none; }
+	.comment-author cite { font-weight: bold; }
+	.comment-meta, .comment-meta a { color: #777; text-decoration: none; }
+	.comment-content { padding-left: 65px; padding-top: 10px;}
 }
 
 /* Smaller than standard 960 (devices and browsers) */
