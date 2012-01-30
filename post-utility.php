@@ -25,6 +25,19 @@ if( is_array($tags) && sizeof($tags) > 0 ){
 }
 
 print implode('<span class="meta-sep"> | </span>', $utilities);
+
+
+$num_comments = get_comments_number();
+$is_link = comments_open() || pings_open() || ($num_comments > 0);
+$comments_link = swp_generate_html(array(
+										 'tagName' => $is_link ? 'a' : 'span',
+										 'class' => 'icon' . ($is_link ? ' theme-color-hover' : ''),
+										 'href' => get_comments_link(),
+										 'contents' => 'd' . swp_generate_html( array('tagName' => 'span',
+																				'class' => 'comments-num',
+																				'contents' => $is_link ? ($num_comments > 0 ? $num_comments : '...') : 'X'
+																				))
+										 ));
 ?>
-<span class="comments-link"><span class="icon">d</span><?php comments_popup_link( '...', '1', '%', 'comments-num', 'X' ); ?></span>
+<span class="comments-link"><?php print $comments_link; ?></span>
 </div><!-- .post-utility -->

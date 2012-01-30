@@ -34,6 +34,12 @@ $content_position = ( $sidebar_position === 'left' ? 'right' : 'left' );?>
 #sidebar{ float: <?php print $sidebar_position; ?>; }
 .primary-bg{ background-color: #<?php print swp_get_option('primary_color'); ?>; }
 .secondary-bg { background-color: #<?php print swp_get_option('secondary_color'); ?>; }
+.primary-color{ color: #<?php print swp_get_option('primary_color'); ?>; }
+.secondary-color{ color: #<?php print swp_get_option('secondary_color'); ?>; }
+body .theme-color-hover{ color: #<?php print swp_get_option('primary_color'); ?>; }
+body .theme-color-hover:hover{ color: #<?php print swp_get_option('secondary_color'); ?>}
+.primary-border{ border-color: #<?php print swp_get_option('primary_color'); ?>; }
+.secondary-border{ border-color: #<?php print swp_get_option('secondary_color'); ?>; }
 a { color: #<?php print swp_get_option('link_color'); ?>; }
 
    </style>

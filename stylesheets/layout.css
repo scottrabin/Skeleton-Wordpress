@@ -27,6 +27,8 @@ body { position: relative; font-family: "HelveticaNeue", "Helvetica Neue", Helve
 body.mobile, body.mobile .mobile { display: inherit; }
 
 h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+a * { cursor: pointer; }
+a:visited { color: inherit; }
 
 .screenreader { position: absolute; left: -9999px; }
 .alignright { float: right; }
@@ -83,8 +85,8 @@ h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helveti
 
 .comments-link { float: right; height: 100%; width: 32px; height: 24px; position: relative; }
 .comments-link * { position: absolute; right: 0; top: 0; font-size: 20px; text-align: center; width: 100%; }
-.comments-link a, .comments-num { color: white; font-size: 15px; text-decoration: none; }
-span.comments-num /* no comments */ { cursor: default; }
+.comments-link span.icon { cursor: default; }
+.comments-num { color: white; font-size: 15px; text-decoration: none; }
 
 .post-utility { clear: both; padding-top: 14px; font-size: 90%; color: #555; }
 
@@ -328,4 +330,5 @@ span.comments-num /* no comments */ { cursor: default; }
 }
 
 .icon {	font-family: "WebSymbolsRegular"; }
+.icon * { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 a.icon { text-decoration: none; }
