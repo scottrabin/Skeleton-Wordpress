@@ -226,8 +226,6 @@ function swp_register_menus(){
 							)
 					  );
 }
-					 
-
 
 require_once ( get_template_directory() . '/settings/theme-options.php' );
 //require_once( get_template_directory() . '/my-theme-settings.php' );
