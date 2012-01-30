@@ -22,7 +22,7 @@
 
 html { overflow-x: hidden; }
 
-body { position: relative; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+body { position: relative; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; padding-bottom: 22px; }
 .mobile { display: none; }
 body.mobile, body.mobile .mobile { display: inherit; }
 
