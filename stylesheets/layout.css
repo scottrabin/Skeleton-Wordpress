@@ -103,6 +103,27 @@ a * { cursor: pointer; }
 #commentform span, #commentform input, #commentform label { display: inline; }
 #comments .icon { font-size: 70%; margin: 0 6px; }
 
+.comment .avatar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 1px;
+	border-width: 1px;
+	border-style: solid;
+	background-color: white;
+}
+.comment-author {
+	position: relative; 
+	padding-left: 65px;
+	border-bottom: 1px solid #ccc;
+	font-size: 80%;
+}
+
+.comment-author a { text-decoration: none; }
+.comment-author cite { font-weight: bold; }
+.comment-meta, .comment-meta a { color: #777; text-decoration: none; }
+.comment-content { padding-left: 65px; padding-top: 10px; min-height: 22px; }
+
 /* #Media Queries
 ================================================== */
 
@@ -179,26 +200,6 @@ a * { cursor: pointer; }
 		float: left;
 		margin: 0 10px 0 0;
 	}
-
-	.comment .avatar {
-		position: absolute;
-		left: 0;
-		top: 0;
-		padding: 1px;
-		border-width: 1px;
-		border-style: solid;
-		background-color: white;
-	}
-	.comment-author {
-		position: relative; 
-		padding-left: 65px;
-		border-bottom: 1px solid #ccc;
-		font-size: 80%;
-	}
-	.comment-author a { text-decoration: none; }
-	.comment-author cite { font-weight: bold; }
-	.comment-meta, .comment-meta a { color: #777; text-decoration: none; }
-	.comment-content { padding-left: 65px; padding-top: 10px;}
 }
 
 /* Smaller than standard 960 (devices and browsers) */
@@ -317,8 +318,15 @@ a * { cursor: pointer; }
 	}
 
 	.commentlist .children { margin: 0 0 0 20px; }
-	.comment { margin: 12px 0 0; padding: 8px; border: 1px solid #aaa; border-radius: 10px; }
 	.commentlist .children .comment { margin-top: 12px; }
+	
+	.comment-meta {
+		position: absolute;
+		top: 20px;
+		left: 65px;
+	}
+	.comment-content { padding-top: 20px; }
+
 }
 
 
