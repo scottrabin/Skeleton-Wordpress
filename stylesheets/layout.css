@@ -73,7 +73,7 @@ a * { cursor: pointer; }
 
 .post-single .post-title { margin-bottom: 0; }
 .post-single .post-utility { padding-top: 5px; margin-bottom: 10px; }
-.post-title a { color: #222; }
+.post-title a, .post-title a:visited { color: #222; }
 .post-meta {
 	color: #999;
 	margin: 0 0 10px;
@@ -139,7 +139,7 @@ a * { cursor: pointer; }
 	header { }
 
 	#blog-title { margin: 0 0; font-size: 45px;}
-	#blog-title a { text-decoration: none; font-weight: bold; letter-spacing: -1px;  }
+	#blog-title a, #blog-title a:visited { text-decoration: none; font-weight: bold; letter-spacing: -1px; color: #222; }
 	#blog-description { text-indent: 25px; margin: 0 0 8px; color: #aaa; font-size: 25px; letter-spacing: -1px; line-height: 25px; }
 
 	#main-menu {
@@ -303,9 +303,8 @@ a * { cursor: pointer; }
 		border-radius: 5px;
 		padding: 5px 8px 8px;
 		margin: 0 0 10px;
-
-		font-size: 85%;
 	}
+	.post-meta { font-size: 90%; }
 	.post-title { margin: 0; font-size: 22px; }
 
 	#nav-below { border-top-width: 0px; }

@@ -40,7 +40,8 @@ body .theme-color-hover{ color: #<?php print swp_get_option('primary_color'); ?>
 body .theme-color-hover:hover{ color: #<?php print swp_get_option('secondary_color'); ?>}
 .primary-border{ border-color: #<?php print swp_get_option('primary_color'); ?>; }
 .secondary-border{ border-color: #<?php print swp_get_option('secondary_color'); ?>; }
-a { color: #<?php print swp_get_option('link_color'); ?>; }
+a, a:visited { color: #<?php print swp_get_option('link_color'); ?>; }
+a:hover, a:focus { color: #222; }
 
    </style>
 
