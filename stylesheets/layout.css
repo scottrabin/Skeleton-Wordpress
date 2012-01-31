@@ -330,6 +330,7 @@ a * { cursor: pointer; }
 	}
 	.comment-content { padding-top: 18px; padding-left: 0; }
 
+	.sidebar { text-align: center; }
 }
 
 
