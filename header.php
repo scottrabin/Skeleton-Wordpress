@@ -64,7 +64,7 @@ a { color: #<?php print swp_get_option('link_color'); ?>; }
 	================================================== -->
 
    <div id="wrap" class="container">
-      <header class="shadow primary">
+      <header class="shadow primary-border">
          <div id="masthead">
  
             <div id="branding">

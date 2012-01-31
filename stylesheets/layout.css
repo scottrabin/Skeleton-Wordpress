@@ -243,8 +243,8 @@ a * { cursor: pointer; }
 
 	header #masthead { height: 100%; }
 	header #branding { float: left; height: 100%; }
-	header #blog-title { line-height: 36px; font-size: 28px; margin: 0 12px; }
-	header #blog-title a { text-decoration: none; color: #222; }
+	header #blog-title { line-height: 37px; font-size: 22px; margin: 0 7px; }
+	header #blog-title a { text-decoration: none; color: #f4f4f4; font-weight: bold; }
 	header #blog-description { display: none; }
 
 	header #access { float: right; height: 100%; }
@@ -256,10 +256,10 @@ a * { cursor: pointer; }
 		text-align: center;
 
 		font-size: 24px;
-		color: #111;
+		color: #f4f4f4;
 	}
 	#show-menu.active, #show-search.active {
-		color: #aaa;
+		color: #222;
 	}
 
 	#main-menu, header #searchform { margin-top: 37px; display: none;}
