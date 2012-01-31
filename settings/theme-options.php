@@ -1,155 +1,143 @@
 <?php
 
-function swp_get_sections(){
-  return array(
-			   'layout' => 'Layout'
-			   );
-}
+class SettingsManager {
 
-function swp_get_options(){
-  $imagepath = get_bloginfo( 'template_directory' ) . '/images/';
+  private $default_settings_properties = array(
+											   'id' => 'null_id',
+											   'title' => '**NO TITLE**',
+											   'desc' => '**NO DESCRIPTION**',
+											   'std' => '',
+											   'type' => 'text',
+											   'section' => 'general',
+											   'choices' => array(),
+											   'class' => ''
+											   );
 
-  return array(
-			   'sidebar_position' => array(
-										   'title' => 'Site Layout',
-										   "desc" => "Select a sidebar layout position",
-										   'section' => 'layout',
-										   "std"  => "right",
-										   "type" => "images",
-										   'class' => 'enum',
-										   "choices" => array(
-															  'left' => $imagepath . '2cl.png',
-															  'right' => $imagepath . '2cr.png'
-															  )
-										   ),
-			   'main_width' => array(
-									 'title' => 'Main Section Width',
-									 'desc' => 'Set the width of the main section of the blog',
-									 'section' => 'layout',
-									 'std' => 13,
-									 'type' => 'select',
-									 'class' => 'range',
-									 'range' => array( 1, 16 ),
-									 'choices' => array(
-														'One' => 1,
-														'Two' => 2,
-														'Three' => 3,
-														'Four' => 4,
-														'Five' => 5,
-														'Six' => 6,
-														'Seven' => 7,
-														'Eight' => 8,
-														'Nine' => 9,
-														'Ten' => 10,
-														'Eleven' => 11,
-														'Twelve' => 12,
-														'Thirteen' => 13,
-														'Fourteen' => 14,
-														'Fifteen' => 15,
-														'Sixteen' => 16
-														)
-									 ),
-			   'primary_color' => array(
-										'title' => 'Primary Theme Color',
-										'desc' => 'Set the primary theme color of the blog',
-										'section' => 'layout',
-										'std' => '5176de',
-										'class' => 'rgb',
-										'type' => 'text'
-										),
-			   'secondary_color' => array(
-										  'title' => 'Secondary Theme Color',
-										  'desc' => 'Set the secondary (highlight) color of the blog',
-										  'section' => 'layout',
-										  'std' => '3156be',
-										  'class' => 'rgb',
-										  'type' => 'text'
-										  ),
-			   'link_color' => array(
-									 'title' => 'Link Color',
-									 'desc' => 'Set the color for anchor links',
-									 'section' => 'layout',
-									 'std' => '2970A6',
-									 'class' => 'rgb',
-									 'type' => 'text'
-									 )
-			   );
-}
+  function __construct() {
+	$this->settings = array();
+	$this->sections = array();
 
-function swp_get_option( $opt ){
-  $options = get_option( 'swp_options' );
-
-  if( isset( $options[ $opt ] ) ){
-	return $options[ $opt ];
-  } else {
-	$options = swp_get_options();
-	return isset( $options[ $opt ][ 'std' ] ) ? $options[ $opt ][ 'std' ] : null;
-  }
-}
-
-/**
- * Assist in creating/registering settings with Wordpress
- */
-function swp_create_setting( $args = array() ){
-  $defaults = array(
-					'id' => 'null_id',
-					'title' => '**NO TITLE**',
-					'desc' => '**NO DESCRIPTION**',
-					'std' => '',
-					'type' => 'text',
-					'section' => 'general',
-					'choices' => array(),
-					'class' => ''
-					);
-
-  extract( wp_parse_args( $args, $defaults ) );
-
-  $field_params = array(
-						'type' => $type,
-						'id' => $id,
-						'desc' => $desc,
-						'std' => $std,
-						'choices' => $choices,
-						'label_for' => $id,
-						'class' => $class
-						);
-
-  add_settings_field( $field_params[ 'id' ], $title, 'swp_display_setting', 'swp_options', $section, $field_params );
-}
-
-function swp_admin_init(){
-
-  // Register all the settings for this theme
-  // do we need to initialize everything to default values?
-
-  $initialize = false;
-  if( $initialize )
-	$defaults = array();
-
-  register_setting( 'swp_options', 'swp_options', 'swp_validate_settings' );
-  $options = swp_get_options();
-
-  // register the sections
-  $sections = swp_get_sections();
-  foreach( $sections as $slug => $title ){
-	add_settings_section( $slug, $title, 'swp_display_section', 'swp_options' );
-  }
-
-  // register the settings
-  $settings = swp_get_options();
-  foreach( $settings as $id => $setting ){
-	$setting['id'] = $id;
-	swp_create_setting( $setting );
-  }
-
-  if( $initialize )	{
-	print 'initializing';
-	//update_option( 'swp_options', $defaults );
+	$this->options = get_option( 'swp_options' );
   }
 	
-  // register settings here
-  wp_enqueue_style( 'admin-style', get_bloginfo('template_directory') . '/settings/css/option.css' );
+  public function addSection( $sectionID, $sectionName ){
+	$this->sections[ $sectionID ] = $sectionName;
+  }
+  public function registerSections(){
+	foreach( $this->sections as $slug => $title ){
+	  add_settings_section( $slug, $title, 'swp_display_section', 'swp_options' );
+	}
+  }
+  public function addSetting( $settingID, $settingProperties ){
+	
+	$args = wp_parse_args( $settingProperties, $this->default_settings_properties );
+
+	$field = array(
+				   'type' => $args['type'],
+				   'id' => $settingID,
+				   'desc' => $args['desc'],
+				   'title' => $args['title'],
+				   'std' => $args['std'],
+				   'choices' => $args['choices'],
+				   'label_for' => $args['id'],
+				   'class' => $args['class'],
+				   'section' => $args['section']
+				   );
+
+	$this->settings[ $settingID ] = $field;
+  }
+  public function createSettings(){
+	register_setting( 'swp_options', 'swp_options', 'swp_validate_settings' );
+	foreach( $this->settings as $settingID => $field ){
+	  add_settings_field( $settingID, $field['title'], 'swp_display_setting', 'swp_options', $field['section'], $field );
+	}
+  }
+  public function get( $settingName ){
+	if( isset( $this->options[ $settingName ] ) ){
+	  return $this->options[ $settingName ];
+	} else if( isset( $this->settings[ $settingName ] ) ){
+	  return $this->settings[ $settingName ]['std'];
+	} else {
+	  return null;
+	}
+  }
 }
+
+$swp_settings = new SettingsManager();
+
+add_action( 'admin_init', array( &$swp_settings, 'createSettings') );
+add_action( 'admin_init', array( &$swp_settings, 'registerSections' ) );
+
+$swp_settings->addSection( 'layout', 'Layout' );
+
+$swp_settings->addSetting( 'sidebar_position', array('title' => 'Site Layout',
+														"desc" => "Select a sidebar layout position",
+														'section' => 'layout',
+														"std"  => "right",
+														"type" => "images",
+														'class' => 'enum',
+														"choices" => array(
+																		   'left' => get_bloginfo( 'template_directory' ) . '/images/2cl.png',
+																		   'right' => get_bloginfo( 'template_directory' ) . '/images/2cr.png'
+																		   )
+														));
+$swp_settings->addSetting( 'main_width', array(
+												  'title' => 'Main Section Width',
+												  'desc' => 'Set the width of the main section of the blog',
+												  'section' => 'layout',
+												  'std' => 13,
+												  'type' => 'select',
+												  'class' => 'range',
+												  'range' => array( 1, 16 ),
+												  'choices' => array(
+																	 'One' => 1,
+																	 'Two' => 2,
+																	 'Three' => 3,
+																	 'Four' => 4,
+																	 'Five' => 5,
+																	 'Six' => 6,
+																	 'Seven' => 7,
+																	 'Eight' => 8,
+																	 'Nine' => 9,
+																	 'Ten' => 10,
+																	 'Eleven' => 11,
+																	 'Twelve' => 12,
+																	 'Thirteen' => 13,
+																	 'Fourteen' => 14,
+																	 'Fifteen' => 15,
+																	 'Sixteen' => 16
+																	 )
+												  ));
+$swp_settings->addSetting('primary_color', array(
+													'title' => 'Primary Theme Color',
+													'desc' => 'Set the primary theme color of the blog',
+													'section' => 'layout',
+													'std' => '5176de',
+													'class' => 'rgb',
+													'type' => 'text'
+													));
+$swp_settings->addSetting('secondary_color', array(
+													  'title' => 'Secondary Theme Color',
+													  'desc' => 'Set the secondary (highlight) color of the blog',
+													  'section' => 'layout',
+													  'std' => '3156be',
+													  'class' => 'rgb',
+													  'type' => 'text'
+													  ));
+$swp_settings->addSetting('link_color', array(
+												 'title' => 'Link Color',
+												 'desc' => 'Set the color for anchor links',
+												 'section' => 'layout',
+												 'std' => '2970A6',
+												 'class' => 'rgb',
+												 'type' => 'text'
+												 ));
+
+function swp_get_option( $opt ){
+  global $swp_settings;
+  return $swp_settings->get( $opt );
+}
+
 function swp_admin_menu(){
   // add theme pages here
   add_theme_page(
@@ -160,7 +148,6 @@ function swp_admin_menu(){
 				 'swp_display_page'
 				 );
 }
-add_action( 'admin_init', 'swp_admin_init' );
 add_action( 'admin_menu', 'swp_admin_menu' );
 
 function swp_validate_settings( $input ){
@@ -223,8 +210,11 @@ function swp_display_page(){
 function swp_display_section( $args = array() ){
 }
 function swp_display_setting( $args = array() ){
+  global $swp_settings;
+
   extract( $args );
-  $options = get_option( 'swp_options' );
+  //$options = get_option( 'swp_options' );
+  $options = $swp_settings->options;
 
   if( empty( $options[$id] ) )
 	$options[$id] = ( $type === 'checkbox' ? 0 : $std );
@@ -240,9 +230,3 @@ function swp_display_setting( $args = array() ){
 	print "</section>";
   }
 }
-
-// initialize settings if necessary
-if( ! get_option( 'swp_options' ) ){
-  //print 'INITIALIZE!';
-}
-

@@ -181,6 +181,8 @@ a * { cursor: pointer; }
 
 	.post-title { border-bottom: 1px solid #777; margin: 25px 0 10px; }
 	.post-title a { text-decoration: none; }
+	
+	.post, .page { margin: 0 0 15px; }
 
 	.sidebar { margin-top: 15px; }
 	.widget-container { margin-bottom: 22px; }

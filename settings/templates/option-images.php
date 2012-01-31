@@ -10,12 +10,7 @@ foreach( $choices as $value => $imgsrc ):
 								'value' => esc_attr( $value ),
 								'checked' => ($options[$id] === $value ? 'checked' : false)
 								));
-/*
-print swp_generate_html(array(
-							  'tagName' => 'div',
-							  'contents' => esc_html( $value )
-							  ));
-*/
+
 print swp_generate_html(array(
 							  'tagName' => 'img',
 							  'src' => esc_url( $imgsrc ),
