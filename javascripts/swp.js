@@ -75,10 +75,13 @@
             return false;
         });
 
-        // when a menu link with children is clicked, show the sub-menu
-        $('html').on( 'click', '.mobile #main-menu a', function(e){
-            // find out if the menu item has a sub-menu
-            var sub_menu = $(this).closest('li').children('ul');
+        $('html').on( 'click', '.mobile #main-menu li', function(e){
+            var sub_menu = $(this).children('ul');
+            console.log( this );
+            console.log( $(e.target) );
+            console.log( sub_menu );
+
+            var sub_menu = $(e.target).is('a') ? null : $(this).children('ul');
 
             if( sub_menu.length > 0 ){
 
@@ -89,6 +92,7 @@
                 return false;
             }
         });
+        
     });
 
 })(jQuery);

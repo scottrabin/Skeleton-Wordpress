@@ -265,8 +265,10 @@ a * { cursor: pointer; }
 
 	#main-menu { width: 100%; overflow: hidden; }
 	#main-menu ul { width: 100%; position: relative; }
-	#main-menu li { height: 36px; margin: 0; border-bottom: 1px solid #ccc; background: white url(../images/arrow_right.png) right center no-repeat; }
+	#main-menu li { height: 36px; margin: 0; border-bottom: 1px solid #ccc; background-color: white; cursor: pointer; }
+	#main-menu li.menu-item-with-sub-menu { background: white url(../images/arrow_right.png) right center no-repeat; }
 	#main-menu a { display: block; line-height: 36px; padding: 0 5px; text-decoration: none; }
+	#main-menu li.menu-item-with-sub-menu a { margin-right: 60px; }
 
 	#main-menu ul ul {
 		position: absolute;

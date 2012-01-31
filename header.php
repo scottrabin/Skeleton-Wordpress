@@ -85,7 +85,7 @@ a:hover, a:focus { color: #222; }
 			   <a id="show-menu" class="mobile icon icon-list-dark" href="?sitemap">²</a>
 			   <a id="show-search" class="mobile icon icon-zoom-dark" href="search">L</a>
 				  <?php /*wp_page_menu( 'sort_column=menu_order' );*/ ?>
-				  <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_id' => 'main-menu' ) ); ?>
+				  <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_id' => 'main-menu', 'walker' => new SWP_Walker() ) ); ?>
 				  <div class="mobile"><?php get_search_form(); ?></div>
             </div><!-- #access -->
  
