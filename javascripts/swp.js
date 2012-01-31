@@ -20,7 +20,7 @@
         overlay_active( activate );
 
         if( ! menu_active() ){
-            menu.css( 'left', '' ).find( '.active' ).removeClass('active');
+            menu.children('.menu').css( 'margin-left', '' ).find( '.active' ).removeClass('active');
         }
     }
 
@@ -49,8 +49,10 @@
         }).trigger('resize');
 
         // close the menu if anything outside the header is clicked
-        $('body').bind( 'click', function(e){
-            if( $(e.target).closest('header').length === 0 ){
+        $('html').on( 'click', 'body.mobile', function(e){
+            if( $(e.target).closest('header').length === 0 ||
+                $(e.target).closest('#main-menu').length === 1 // should be halted before reaching this
+              ){
                 search_active( false );
                 menu_active( false );
             }
@@ -81,7 +83,7 @@
             if( sub_menu.length > 0 ){
 
                 sub_menu.addClass('active');
-                $('#main-menu').animate({left: '-=100%'}, ANIM_TIME);
+                $('#main-menu').children('.menu').animate({marginLeft: '-=100%'}, ANIM_TIME);
 
                 e.preventDefault();
                 return false;
