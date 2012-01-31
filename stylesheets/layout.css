@@ -70,6 +70,8 @@ a * { cursor: pointer; }
 .nav-next { float: right; }
 .nav-previous { float: left; }
 
+.post, .page { margin: 0 0 15px; }
+
 .post-single .post-title { margin-bottom: 0; }
 .post-single .post-utility { padding-top: 5px; margin-bottom: 10px; }
 .post-title a, .post-title a:visited { color: #222; }
@@ -77,7 +79,6 @@ a * { cursor: pointer; }
 	color: #999;
 	margin: 0 0 10px;
 }
-.more-link { float: right; padding: 8px; }
 .post-utility { clear: both; padding-top: 14px; font-size: 90%; color: #555; }
 
 .comments-link { float: right; height: 100%; width: 32px; height: 24px; position: relative; }
@@ -182,8 +183,6 @@ a * { cursor: pointer; }
 	.post-title { border-bottom: 1px solid #777; margin: 25px 0 10px; }
 	.post-title a { text-decoration: none; }
 	
-	.post, .page { margin: 0 0 15px; }
-
 	.sidebar { margin-top: 15px; }
 	.widget-container { margin-bottom: 22px; }
 	.widget-container ul { margin-left: 8px; }
@@ -215,7 +214,7 @@ a * { cursor: pointer; }
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
 
-	.container { position: static; }
+	.container { position: relative; }
 	header {
 		height: 36px;
 		position: absolute;
@@ -239,15 +238,14 @@ a * { cursor: pointer; }
 		z-index: 750;
 	}
 
-	header #masthead { height: 100%; }
-	header #branding { float: left; height: 100%; }
+	header #masthead { height: 100%; position: relative; }
+	header #branding { margin-right: 70px; overflow: hidden; white-space: nowrap; height: 100%; }
 	header #blog-title { line-height: 37px; font-size: 22px; margin: 0 7px; }
 	header #blog-title a { text-decoration: none; color: #f4f4f4; font-weight: bold; }
 	header #blog-description { display: none; }
 
-	header #access { float: right; height: 100%; }
+	header #access { height: 100%; }
 	#show-menu, #show-search {
-		float: right;
 		display: block;
 		width: 32px;
 		line-height: 36px;
@@ -255,12 +253,14 @@ a * { cursor: pointer; }
 
 		font-size: 24px;
 		color: #f4f4f4;
+		position: absolute;
+		top: 0;
 	}
-	#show-menu.active, #show-search.active {
-		color: #222;
-	}
+	#show-menu{ right: 0; }
+	#show-search{ right: 32px; }
+	#show-menu.active, #show-search.active { color: #222; }
 
-	#main-menu, header #searchform { margin-top: 37px; display: none;}
+	#main-menu, header #searchform { display: none; }
 	#main-menu.active, header #searchform.active { display: block; }
 
 	#main-menu { position: absolute; left: 0; width: 100%; }
@@ -282,7 +282,6 @@ a * { cursor: pointer; }
 		position: absolute;
 		left: 0;
 		right: 0;
-		margin-top: 37px;
 		padding: 8px;
 
 		visibility: hidden;
@@ -298,7 +297,6 @@ a * { cursor: pointer; }
 		border: 1px solid #ccc;
 		border-radius: 5px;
 		padding: 5px 8px 8px;
-		margin: 0 0 10px;
 	}
 	.post-meta { font-size: 90%; }
 	.post-title { margin: 0; font-size: 22px; }
@@ -313,7 +311,7 @@ a * { cursor: pointer; }
 	.comment-form-email input,
 	.comment-form-url input {
 		float: right;
-		margin: 0 0 0 0;
+		margin: 0;
 	}
 
 	.commentlist .children { margin: 0 0 0 20px; }
