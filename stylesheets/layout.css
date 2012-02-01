@@ -121,6 +121,8 @@ a * { cursor: pointer; }
 
 .widget-title { border-bottom: 1px dashed #ccc; padding-bottom: 3px; font-size: 24px; line-height: 30px; }
 
+footer { font-size: 80%; text-align: center; clear: both; }
+
 /* #Media Queries
 ================================================== */
 

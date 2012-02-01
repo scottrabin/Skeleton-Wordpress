@@ -132,6 +132,14 @@ $swp_settings->addSetting('link_color', array(
 												 'class' => 'rgb',
 												 'type' => 'text'
 												 ));
+$swp_settings->addSetting('footer_text', array(
+											   'title' => 'Footer Text',
+											   'desc' => 'This text will appear, unescaped, in the footer area of the page',
+											   'section' => 'layout',
+											   'std' => '<a href="https://github.com/scottrabin/Skeleton-Wordpress">Skeleton Wordpress</a> theme | Powered by <a href="http://wordpress.org/">WordPress</a>',
+											   'class' => 'text',
+											   'type' => 'textarea'
+											   ));
 
 function swp_get_option( $opt ){
   global $swp_settings;
@@ -219,9 +227,7 @@ function swp_display_setting( $args = array() ){
   if( empty( $options[$id] ) )
 	$options[$id] = ( $type === 'checkbox' ? 0 : $std );
 
-  $field_class = '';
-  if( $class != '' )
-	$field_class = " class=\"${class}\"";
+  $field_class = ($class != '' ? ' ' . $class : '');
 
   $template = dirname( __FILE__ ) . "/templates/option-${type}.php";
   if( file_exists( $template ) ){
@@ -230,3 +236,10 @@ function swp_display_setting( $args = array() ){
 	print "</section>";
   }
 }
+
+function swp_admin_styles(){
+  echo '<style type="text/css">' .
+	'#wpbody-content form textarea { width: 25em; height: 10em; }' .
+	'</style>';
+}
+add_action( 'admin_head', 'swp_admin_styles' );

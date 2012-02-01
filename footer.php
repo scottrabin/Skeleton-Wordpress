@@ -1,4 +1,6 @@
-	</div><!-- container -->
+<footer><span><?php print swp_get_option('footer_text'); ?></span></footer>
+
+</div><!-- container -->
 
 	  <div id="overlay"></div>
 	  <div id="header-bg-primary" class="primary-bg"></div>
