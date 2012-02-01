@@ -1,7 +1,6 @@
 <?php get_header(); ?>
  
-   <div id="container">
-      <div id="content">
+      <div id="content" class="<?php print swp_column_width('main'); ?> columns">
  
          <div id="post-0" class="post error404 not-found">
             <h1 class="entry-title"><?php _e( 'Not Found', WP_THEME_NAME ); ?></h1>
@@ -12,7 +11,6 @@
          </div><!-- #post-0 -->
  
       </div><!-- #content -->
-   </div><!-- #container -->
- 
+  
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

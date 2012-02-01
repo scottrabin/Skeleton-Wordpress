@@ -131,7 +131,7 @@ a * { cursor: pointer; }
 	/* Header styles */
 	#header-bg-primary { position: absolute; top: 0; left: 0; right: 0; height: 8px; }
 	#header-bg-secondary { position: absolute; top: 8px; left: 0; right: 0; height: 8px; }
-	header { }
+	header { margin-bottom: 15px; }
 
 	#blog-title { margin: 0 0; font-size: 45px;}
 	#blog-title a, #blog-title a:visited { text-decoration: none; font-weight: bold; letter-spacing: -1px; color: #222; }
@@ -180,10 +180,10 @@ a * { cursor: pointer; }
 	/* enable visibility */
 	#main-menu li:hover > ul { visibility: visible }
 
-	.post-title { border-bottom: 1px solid #777; margin: 25px 0 10px; }
+	.post-title { border-bottom: 1px solid #777; margin: 0 0 10px; }
 	.post-title a { text-decoration: none; }
 	
-	.sidebar { margin-top: 15px; }
+	.sidebar { /*margin-top: 15px;*/ }
 	.widget-container { margin-bottom: 22px; }
 	.widget-container ul { margin-left: 8px; }
 
