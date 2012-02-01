@@ -240,6 +240,9 @@ function swp_display_setting( $args = array() ){
 function swp_admin_styles(){
   echo '<style type="text/css">' .
 	'#wpbody-content form textarea { width: 25em; height: 10em; }' .
+	'#wpbody-content form .section-images input[type="radio"] { visibility: hidden; }' .
+	'#wpbody-content form .section-images img { border: 3px solid transparent; }' .
+	'#wpbody-content form .section-images img.active { border-color: #ccc; }' .
 	'</style>';
 }
 add_action( 'admin_head', 'swp_admin_styles' );
