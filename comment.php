@@ -12,7 +12,7 @@
   printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'&nbsp;&nbsp;','' );
 ?>
         </span>
-		<span class="reply alignright">
+		<span class="reply align-right">
 	 <?php if( empty($comment->comment_type) ){
 	 comment_reply_link(array_merge( $args,
 		array('add_below' => $add_below, 
@@ -29,7 +29,7 @@
      <?php endif; ?>
 	 <div class="comment-content clearfix"><?php print $comment_text; ?>
 
-   <div class="reply alignright">
+   <div class="reply align-right">
 <?php 
 	 if( empty($comment->comment_type) && strlen( $comment_text ) > 300 ){
 comment_reply_link(array_merge( $args,

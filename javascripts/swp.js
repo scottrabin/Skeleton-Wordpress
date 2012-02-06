@@ -76,14 +76,10 @@
         });
 
         $('html').on( 'click', '.mobile #main-menu li', function(e){
-            var sub_menu = $(this).children('ul');
-            console.log( this );
-            console.log( $(e.target) );
-            console.log( sub_menu );
 
             var sub_menu = $(e.target).is('a') ? null : $(this).children('ul');
 
-            if( sub_menu.length > 0 ){
+            if( sub_menu && sub_menu.length > 0 ){
 
                 sub_menu.addClass('active');
                 $('#main-menu').children('.menu').animate({marginLeft: '-=100%'}, ANIM_TIME);
@@ -92,7 +88,7 @@
                 return false;
             }
         });
-        
+
     });
 
 })(jQuery);

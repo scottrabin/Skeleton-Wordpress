@@ -5,7 +5,7 @@
    <span><?php printf( _n( '%s response', '%s responses', get_comments_number() ), number_format_i18n( get_comments_number() ) ); ?></span>
 
  <?php if( comments_open() ): ?>
-<a href="<?php print comments_rss(); ?>" class="icon alignright theme-color-hover" type="application/rss+xml" rel="alternate" title="Comments RSS for <?php the_title_attribute(); ?>">B</a>
+<a href="<?php print comments_rss(); ?>" class="icon align-right theme-color-hover" type="application/rss+xml" rel="alternate" title="Comments RSS for <?php the_title_attribute(); ?>">B</a>
    <?php endif; ?>
 
 <?php if ( have_comments() ) : ?>

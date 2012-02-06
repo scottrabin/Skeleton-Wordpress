@@ -11,9 +11,9 @@
     <title><?php swp_print_title(); ?></title>
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+    <!--[if lt IE 9]>
+       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
 	<!-- Mobile Specific Metas
   ================================================== -->
@@ -44,6 +44,7 @@ a, a:visited { color: #<?php print swp_get_option('link_color'); ?>; }
 a:hover, a:focus { color: #222; }
 
    </style>
+   <script src="<?php bloginfo('template_directory'); ?>/javascripts/respond.min.js"></script>
 
 	<!-- Favicons
 	================================================== -->
