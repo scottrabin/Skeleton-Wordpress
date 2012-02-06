@@ -44,7 +44,9 @@ a, a:visited { color: #<?php print swp_get_option('link_color'); ?>; }
 a:hover, a:focus { color: #222; }
 
    </style>
-   <script src="<?php bloginfo('template_directory'); ?>/javascripts/respond.min.js"></script>
+   <!--[if lt IE 9]>
+      <script src="<?php bloginfo('template_directory'); ?>/javascripts/respond.min.js"></script>
+   <![endif]-->
 
 	<!-- Favicons
 	================================================== -->
